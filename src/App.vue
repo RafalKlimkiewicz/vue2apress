@@ -1,15 +1,15 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <StoreComponent  />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import StoreComponent  from './components/StoreComponent'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    StoreComponent 
   }
 }
 </script>
@@ -24,3 +24,5 @@ export default {
   margin-top: 60px;
 }
 </style>
+
+

@@ -7,12 +7,14 @@
                 <option value="12">12 on page</option>
             </select>
         </div>
-        <div v-if="pageCount > 1" class="text-right col">
-            <div class="btn-group mx-2">
-                <button v-for="i in pageNumbers" v-bind:key="i" class="btn"
-                    v-bind:class="{ 'btn-primary': i == currentPage, 'btn-secondary': i != currentPage }"
-                    v-on:click="setCurrentPage(i)">
-                    {{ i }}</button>
+        <div class="text-right col">
+            <div v-if="pageCount > 1" class="text-right col">
+                <div class="btn-group mx-2">
+                    <button v-for="i in pageNumbers" v-bind:key="i" class="btn"
+                        v-bind:class="{ 'btn-primary': i == currentPage, 'btn-secondary': i != currentPage }"
+                        v-on:click="setCurrentPage(i)">
+                        {{ i }}</button>
+                </div>
             </div>
         </div>
     </div>
@@ -21,19 +23,19 @@
 <script>
 import { mapState, mapGetters, mapMutations } from "vuex";
 
-export default{
+export default {
     computed: {
         ...mapState(["products", "currentPage"]),
         ...mapGetters(["pageCount"]),
-        pageNumbers(){
+        pageNumbers() {
             return [...Array(this.pageCount + 1).keys()].slice(1);
         }
     },
-    methods:{
+    methods: {
         ...mapMutations(["setCurrentPage", "setPageSize"]),
-        changePageSize($event){
-        this.setPageSize(Number($event.target.value));
-    }
+        changePageSize($event) {
+            this.setPageSize(Number($event.target.value));
+        }
     }
 }
 

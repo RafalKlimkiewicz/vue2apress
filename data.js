@@ -22,7 +22,7 @@ var data = [{ id: 1, name: "Kayak", category: "Watersports",
 module.exports = function () {
     return { 
         products: data,
-        categories: [...new Set(data.map(p => p.category))].sort(),
+        categories: ["All", ...new Set(data.map(p => p.category))].sort(),
         orders: []
     }
 }

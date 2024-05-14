@@ -4,12 +4,19 @@
 
 <script>
 
-import StoreComponent  from './components/StoreComponent'
+import StoreComponent  from './components/StoreComponent';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'App',
-  components: {
+  components: { 
     StoreComponent 
+  },
+  methods: {
+    ...mapActions(["getData"])
+  },
+  created(){
+    this.getData();
   }
 }
 </script>

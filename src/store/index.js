@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import Axios from "axios";
+import CarModule from "./cart";
 
 Vue.use(Vuex);
 
@@ -8,19 +9,10 @@ const baseUrl = "http://localhost:3500";
 const productsUrl = `${baseUrl}/products`;
 const categoriesUrl = `${baseUrl}/categories`;
 
-// const testData = [];
-// for (let i = 1; i <= 10; i++) {
-//     testData.push({ 
-//         id: i, 
-//         name: `Product #${i}`, 
-//         category: `Category: ${(i % 3)}`, 
-//         description: `This is Product: #${i}`, 
-//         price: i * 50 });
-// }
-
 export default new Vuex.Store(
     {
         strict: true,
+        modules: { cart: CarModule },
         state:{
             products: [],
             categories: [],
@@ -36,7 +28,7 @@ export default new Vuex.Store(
                 return getters.productsFilteredByCategory.slice(index, index + state.pageSize);
             },
             pageCount: (state, getters) => Math.ceil(getters.productsFilteredByCategory.length / state.pageSize),
-            categories: state => ["All", ...state.categories],
+            categories: state => [...state.categories],
             currentPage: state => state.currentPage,
         },
         mutations:{

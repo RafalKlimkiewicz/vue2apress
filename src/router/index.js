@@ -9,7 +9,6 @@ export default new VueRouter({
     mode: "history",
     routes: [
         { path: "/", component: Store },
-        { path: "/dupa", component: Store },
         { path : "/cart", component: ShoppingCart },
         { path: "*", redirect: "/" },
     ]

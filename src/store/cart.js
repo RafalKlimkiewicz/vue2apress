@@ -16,6 +16,20 @@ export default {
             }else{
                 state.lines.push({ product: product, quantity: 1 });
             }
+        },
+        changeQuantity(state, update){
+            let line = state.lines.find(line => line.product.id == update.line.product.id);
+            console.log('changeQuantity');
+            if (line) {
+                line.quantity = update.quantity;
+            } else {
+                console.error(`Line not found for product id ${update.line.product.id}`);
+            }
+        },
+        removeProduct(state, lineToRemove){
+            let index = state.lines.findIndex(line => line == lineToRemove);
+            if(index > -1)
+                state.lines.splice(index, 1);
         }
     }
 }

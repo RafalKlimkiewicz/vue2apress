@@ -29,7 +29,7 @@ export default{
         }
     },
     methods: {
-        ...mapMutations({ addProduct : "cart/AddProduct"}),
+        ...mapMutations({ addProduct : "cart/addProduct"}),
         handleProductAdd(product){
             this.addProduct(product);
             this.$router.push("/cart");

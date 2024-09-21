@@ -4,7 +4,7 @@
             <button class="btn btn-block" v-on:click="setCurrentCategory(c)"
                 v-bind:class="c == currentCategory ? 'btn-primary' : 'btn-secondary'">
                 {{ c }}
-            </button>
+                </button>
         </div>
     </div>
 </template>

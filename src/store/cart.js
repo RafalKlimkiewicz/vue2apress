@@ -30,6 +30,28 @@ export default {
             let index = state.lines.findIndex(line => line == lineToRemove);
             if(index > -1)
                 state.lines.splice(index, 1);
+        },
+        setCardData(state, data){
+            state.lines = data;
+        }
+    },
+    actions:{
+        loadCardData(context){
+            let data = localStorage.getItem("card");
+            if(data != null){
+                context.commit("setCartData", JSON.parse(data));
+            }
+        },
+        storeCartData(context){
+            localStorage.setItem("cart", JSON.stringify(context.state.line));
+        },
+        clearCartData(context){
+            context.commit("setCartData", []);
+        },
+        initializeCart(context, store){
+            context.dispatch("localCartData");
+            store.watch(state => state.cart.lines, () => context.dispatch("storeCartData"),
+                { deep: true });
         }
     }
 }
